@@ -9,7 +9,7 @@ MENU = {
     "latte": {
         "ingredients": {
             "water": 200,
-            "milk": 150,
+            "milk": 1500,
             "coffee": 24,
         },
         "cost": 2.5,
@@ -34,11 +34,16 @@ resources = {
 # TODO: 4. Check resources sufficient?
 def resource_check(drink):
     for key in resources:
-        if resources[key] < MENU[drink]['ingredients'][key]:
-            print(f"Sorry there is not enough {key}")
-            break
-        # print(resources[key])
+        if key in MENU[drink]["ingredients"]:
+            if resources[key] < MENU[drink]['ingredients'][key]:
+                # print(MENU[drink]['ingredients'][key])
+                print(f"Sorry there is not enough {key}")
+                break
         # print(MENU[drink]['ingredients'][key])
+    # for key, value in resources.items():
+    #     print("available", key, value)
+    # for key, value in MENU[drink]['ingredients'].items():
+    #     print("Your order requires: ", key, value)
 
 
 money = 0
@@ -46,16 +51,19 @@ money = 0
 app_running = True
 while app_running:
     drink = input("What would you like? (espresso/latte/cappuccino):")
-    print(resource_check(drink))
-    # TODO: 2. Turn off the Coffee Machine by entering “off” to the prompt. Your code should end execution when this happens
+    # TODO: 2. Turn off the Coffee Machine by entering “off” to the prompt. Your code should end execution when this
+    # happens
     if drink == "off":
-        app_running = False
+        # app_running = False
+        break
     # TODO: 3. Print report
     elif drink == "report":
         print(f"Water: {resources['water']}ml")
         print(f"Milk: {resources['milk']}ml")
         print(f"Coffee: {resources['coffee']}g")
         print(f"Money: ${money}")
+    else:
+        resource_check(drink)
 
 # TODO: 5. Process coins
 # TODO: 6. Check transaction successful?
