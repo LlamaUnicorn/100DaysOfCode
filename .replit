@@ -1,0 +1,2 @@
+language = "python3"
+run = "python 'Day 15/main.py'"
