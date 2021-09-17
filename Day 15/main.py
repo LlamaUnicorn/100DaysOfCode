@@ -9,7 +9,7 @@ MENU = {
     "latte": {
         "ingredients": {
             "water": 200,
-            "milk": 1500,
+            "milk": 150,
             "coffee": 24,
         },
         "cost": 2.5,
@@ -39,22 +39,20 @@ def resource_check(drink):
                 # print(MENU[drink]['ingredients'][key])
                 print(f"Sorry there is not enough {key}")
                 break
-        # print(MENU[drink]['ingredients'][key])
     # for key, value in resources.items():
     #     print("available", key, value)
     # for key, value in MENU[drink]['ingredients'].items():
     #     print("Your order requires: ", key, value)
 
 
-money = 0
+money = 0.0
 # TODO: 1. Prompt user by asking “What would you like? (espresso/latte/cappuccino):”
 app_running = True
 while app_running:
-    drink = input("What would you like? (espresso/latte/cappuccino):")
+    drink = input("What would you like? (espresso/latte/cappuccino): ")
     # TODO: 2. Turn off the Coffee Machine by entering “off” to the prompt. Your code should end execution when this
     # happens
     if drink == "off":
-        # app_running = False
         break
     # TODO: 3. Print report
     elif drink == "report":
@@ -64,7 +62,15 @@ while app_running:
         print(f"Money: ${money}")
     else:
         resource_check(drink)
+    
+    # TODO: 5. Process coins. BUG: Why 79 instead of 69? 2-2-1-4
+    print("Please insert coins")
+    quarters = int(input("How many quarters? "))
+    dimes = int(input("How many dimes? "))
+    nickels = int(input("How many nickels? "))
+    pennies = int(input("How many pennies? "))
+    total_sum = quarters * 25 + dimes * 10 + nickels * 5 + pennies
+    print(total_sum / 100)
 
-# TODO: 5. Process coins
 # TODO: 6. Check transaction successful?
 # TODO: 7. Make Coffee.
