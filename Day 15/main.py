@@ -63,14 +63,15 @@ while app_running:
     else:
         resource_check(drink)
     
-    # TODO: 5. Process coins. BUG: Why 79 instead of 69? 2-2-1-4
+    # TODO: 5. Process coins.
     print("Please insert coins")
     quarters = int(input("How many quarters? "))
     dimes = int(input("How many dimes? "))
     nickels = int(input("How many nickels? "))
     pennies = int(input("How many pennies? "))
-    total_sum = quarters * 25 + dimes * 10 + nickels * 5 + pennies
-    print(total_sum / 100)
+    total_sum = (quarters * 25 + dimes * 10 + nickels * 5 + pennies) / 100
+    print(total_sum)
+    print(MENU[drink]["cost"])
 
 # TODO: 6. Check transaction successful?
 # TODO: 7. Make Coffee.
