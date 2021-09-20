@@ -1,3 +1,5 @@
+# https://repl.it/@appbrewery/coffee-machine-final?embed=1&output=1#main.py
+
 MENU = {
     "espresso": {
         "ingredients": {
@@ -72,6 +74,14 @@ while app_running:
     total_sum = (quarters * 25 + dimes * 10 + nickels * 5 + pennies) / 100
     print(total_sum)
     print(MENU[drink]["cost"])
+    if total_sum < MENU[drink]["cost"]:
+        print("Sorry that's not enough money. Money refunded.")
+    elif total_sum >= MENU[drink]["cost"]:
+        change_left = total_sum - MENU[drink]["cost"]
+        if total_sum > MENU[drink]["cost"]:
+            print(f"Here is ${change_left} in change.")
+        print(f"Here is your {drink} ☕️. Enjoy!")
+
 
 # TODO: 6. Check transaction successful?
 # TODO: 7. Make Coffee.
