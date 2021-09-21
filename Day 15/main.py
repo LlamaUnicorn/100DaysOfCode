@@ -62,6 +62,7 @@ while app_running:
         print(f"Milk: {resources['milk']}ml")
         print(f"Coffee: {resources['coffee']}g")
         print(f"Money: ${money}")
+        continue
     else:
         resource_check(drink)
     
@@ -72,16 +73,24 @@ while app_running:
     nickels = int(input("How many nickels? "))
     pennies = int(input("How many pennies? "))
     total_sum = (quarters * 25 + dimes * 10 + nickels * 5 + pennies) / 100
+    total_sum = format(total_sum, ".2f")
+    total_sum = float(total_sum)
     print(total_sum)
     print(MENU[drink]["cost"])
+# TODO: 6. Check transaction successful?
     if total_sum < MENU[drink]["cost"]:
         print("Sorry that's not enough money. Money refunded.")
+        continue
     elif total_sum >= MENU[drink]["cost"]:
         change_left = total_sum - MENU[drink]["cost"]
+        change_left = format(change_left, ".2f")
+        change_left = float(change_left)
         if total_sum > MENU[drink]["cost"]:
             print(f"Here is ${change_left} in change.")
         print(f"Here is your {drink} ☕️. Enjoy!")
+        money += MENU[drink]['cost']
 
-
-# TODO: 6. Check transaction successful?
 # TODO: 7. Make Coffee.
+    for key in resources:
+        if key in MENU[drink]["ingredients"]:
+            resources[key] -= MENU[drink]['ingredients'][key]
