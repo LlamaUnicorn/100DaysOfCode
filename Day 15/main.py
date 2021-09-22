@@ -34,17 +34,17 @@ resources = {
 
 
 # TODO: 4. Check resources sufficient?
-def resource_check(drink):
+def resource_check(order):
     """Checks available resources for the order"""
     for key in resources:
-        if key in MENU[drink]["ingredients"]:
-            if resources[key] < MENU[drink]['ingredients'][key]:
-                # print(MENU[drink]['ingredients'][key])
+        if key in MENU[order]["ingredients"]:
+            if resources[key] < MENU[order]['ingredients'][key]:
+                # print(MENU[order]['ingredients'][key])
                 print(f"Sorry there is not enough {key}")
                 break
     # for key, value in resources.items():
     #     print("available", key, value)
-    # for key, value in MENU[drink]['ingredients'].items():
+    # for key, value in MENU[order]['ingredients'].items():
     #     print("Your order requires: ", key, value)
 
 
