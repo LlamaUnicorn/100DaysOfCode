@@ -35,6 +35,7 @@ resources = {
 
 # TODO: 4. Check resources sufficient?
 def resource_check(drink):
+    """Checks available resources for the order"""
     for key in resources:
         if key in MENU[drink]["ingredients"]:
             if resources[key] < MENU[drink]['ingredients'][key]:
