@@ -41,11 +41,26 @@ def resource_check(order):
             if resources[key] < MENU[order]['ingredients'][key]:
                 # print(MENU[order]['ingredients'][key])
                 print(f"Sorry there is not enough {key}")
+                not_enough_resources = True
+                return not_enough_resources
                 break
     # for key, value in resources.items():
     #     print("available", key, value)
     # for key, value in MENU[order]['ingredients'].items():
     #     print("Your order requires: ", key, value)
+
+
+def process_coins():
+    print("Please insert coins")
+    quarters = int(input("How many quarters? "))
+    dimes = int(input("How many dimes? "))
+    nickels = int(input("How many nickels? "))
+    pennies = int(input("How many pennies? "))
+    total_sum = (quarters * 25 + dimes * 10 + nickels * 5 + pennies) / 100
+    total_sum = format(total_sum, ".2f")
+    total_sum = float(total_sum)
+    return total_sum
+
 
 
 money = 0.0
@@ -65,17 +80,13 @@ while app_running:
         print(f"Money: ${money}")
         continue
     else:
-        resource_check(drink)
+        resource_shortage = resource_check(drink)
+        if resource_shortage == True:
+            continue
     
     # TODO: 5. Process coins.
-    print("Please insert coins")
-    quarters = int(input("How many quarters? "))
-    dimes = int(input("How many dimes? "))
-    nickels = int(input("How many nickels? "))
-    pennies = int(input("How many pennies? "))
-    total_sum = (quarters * 25 + dimes * 10 + nickels * 5 + pennies) / 100
-    total_sum = format(total_sum, ".2f")
-    total_sum = float(total_sum)
+    total_sum = process_coins()
+
     print(total_sum)
     print(MENU[drink]["cost"])
 # TODO: 6. Check transaction successful?
