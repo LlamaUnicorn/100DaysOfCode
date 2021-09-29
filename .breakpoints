@@ -29,9 +29,27 @@
     "Day 16/main.py": [
       {
         "id": "595d926b-0791-4ac2-acdd-8ca042c3db9c",
-        "line": 18,
-        "version": 182,
-        "index": 468
+        "line": 11,
+        "version": 277,
+        "index": 306
+      },
+      {
+        "id": "d25e59b7-e806-482a-9bcb-e9c6ce06d39f",
+        "line": 12,
+        "version": 510,
+        "index": 307
+      },
+      {
+        "id": "1d814b4d-f32e-4844-beb7-4a4f17593ca2",
+        "line": 15,
+        "version": 512,
+        "index": 338
+      },
+      {
+        "id": "a7ef4737-b34b-4b5a-b73b-f2f93ffd48b2",
+        "line": 28,
+        "version": 368,
+        "index": 724
       }
     ]
   }

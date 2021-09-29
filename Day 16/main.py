@@ -4,16 +4,14 @@ from menu import Menu, MenuItem
 from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
 
-# TODO: Print report
+
 my_money_machine = MoneyMachine()
 my_coffemaker = CoffeeMaker()
 
 
-# TODO: Check resources sufficient
 is_on = True
 
 my_menu = Menu()
-#my_menu_item = MenuItem() 
 
 while is_on:
     options = my_menu.get_items
@@ -25,14 +23,14 @@ while is_on:
         my_coffemaker.report()
     else:
         drink = my_menu.find_drink(choice)
+        is_enough_ingredients = my_coffemaker.is_resource_sufficient(drink)
+        is_payment_successful = my_money_machine.make_payment(drink.cost)
+        if is_enough_ingredients and is_payment_successful:
+            my_coffemaker.make_coffee(drink)
 
-
+# TODO: Print report
+# TODO: Check resources sufficient
 # TODO: Process coins
 # TODO: Check transaction successful
 # TODO: Make Coffee
-
-# test_menu = MenuItem('Latte')
-# test_menu.name('Latte')
-# print(test_menu.ingredients)
-
 
