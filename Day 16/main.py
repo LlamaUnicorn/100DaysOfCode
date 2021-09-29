@@ -5,7 +5,28 @@ from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
 
 # TODO: Print report
+my_money_machine = MoneyMachine()
+my_coffemaker = CoffeeMaker()
+
+
 # TODO: Check resources sufficient
+is_on = True
+
+my_menu = Menu()
+#my_menu_item = MenuItem() 
+
+while is_on:
+    options = my_menu.get_items
+    choice = input(f"What would you like ({options}: ")
+    if choice == "off":
+        is_on = False
+    elif choice == "report":
+        my_money_machine.report()
+        my_coffemaker.report()
+    else:
+        drink = my_menu.find_drink(choice)
+
+
 # TODO: Process coins
 # TODO: Check transaction successful
 # TODO: Make Coffee
@@ -14,6 +35,4 @@ from money_machine import MoneyMachine
 # test_menu.name('Latte')
 # print(test_menu.ingredients)
 
-my_coffemaker = CoffeeMaker()
-my_coffemaker.report()
-my_coffemaker.is_resource_sufficient()
+
