@@ -9,6 +9,7 @@ class User:
         user.followers += 1
         self.following += 1
 
+
 user_1 = User("001", "angela")
 user_2 = User("002", "jack")
 
