@@ -9,11 +9,13 @@ colors = ['red', 'green', 'yellow', 'orange', 'teal', 'cyan']
 tim.shape("turtle")
 tim.color("deep sky blue")
 
+
 def draw_shape(num_sides):
     angle = 360 / num_sides
     for i in range(num_sides):
         tim.forward(100)
         tim.left(angle)
+
 
 for shape_side_n in range(3, 11):
     tim.color(random.choice(colors))
