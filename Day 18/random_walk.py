@@ -20,7 +20,7 @@ for shape_side_n in range(100):
     tim.speed(10)
     tim.color(random.choice(colors))
     tim.right(random.randrange(0, 360, 90))
-    tim.forward(10)
+    tim.forward(30)
 
 # for i in range(4):
 #     tim.forward(100)
