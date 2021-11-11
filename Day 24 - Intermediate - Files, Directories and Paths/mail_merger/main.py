@@ -10,28 +10,45 @@
 # Read names from the list and save them to the names_list.
 with open('./Input/Names/invited_names.txt') as invited_names:
     names_list = invited_names.readlines()
-    print(names_list)
+    # print(names_list)
 
-# Strip extra characters from the names_list.
-names_string = ''
+# turn letter into a string
+with open('./Input/Letters/starting_letter.txt') as file:
+    read_letter = file.read()
+    # read_letter = file.readlines()
+    # string_letter = ''
+    # # turn letter as a list into a string
+    # for word in read_letter:
+    #     string_letter += word
+# Loop through the names_list:
 for name in names_list:
-    names_string += name
-
-print(names_string)
-x = names_string.replace('\n', ' ')
-print(x)
+    stripped_name = name.strip('\n') # removing extra characters
+    # replace [name] with the name from the names_list
+    replaced_name = read_letter.replace('[name]', stripped_name)
+    # replaced_name = read_letter.replace('[name]', f'{stripped_name}')
+    # saving as the finished letter
+    with open(f'./Output/ReadyToSend/Invitation to {stripped_name}', 'w') as finished_letter:
+        finished_letter.write(replaced_name)
+# Strip extra characters from the names_list.
+# names_string = ''
+# for name in names_list:
+#     names_string += name
+#
+# print(names_string)
+# x = names_string.replace('\n', ' ')
+# print(x)
 # Insert names into the templates/
 # with open('./Input/Letters/starting_letter.txt', 'w') as template:
 #     for name in names_list:
 #         names_list.replace()
 
-# Return all lines in the file, as a list where each line is an item in the list object:
+# Hint 1: Return all lines in the file, as a list where each line is an item in the list object:
 #
 # f = open("demofile.txt", "r")
 # print(f.readlines())
 
 
-# Replace the word "bananas":
+# Hint 2: Replace the word "bananas":
 #
 # txt = "I like bananas"
 #
@@ -40,7 +57,7 @@ print(x)
 # print(x)
 
 
-# Remove spaces at the beginning and at the end of the string:
+# Hint 3: Remove spaces at the beginning and at the end of the string:
 #
 # txt = "     banana     "
 #
