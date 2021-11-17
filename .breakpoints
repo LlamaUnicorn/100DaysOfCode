@@ -51,6 +51,20 @@
         "version": 520,
         "index": 888
       }
+    ],
+    "Day 26 - Intermediate - List Comprehension and the NATO Alphabet/NATO names/main.py": [
+      {
+        "id": "5673fb1f-fa39-4ea0-9ed2-a36d4eb9b70c",
+        "line": 11,
+        "version": 322,
+        "index": 158
+      },
+      {
+        "id": "4d7ba3af-2a91-4c51-89c4-9d9b76c92811",
+        "line": 18,
+        "version": 324,
+        "index": 330
+      }
     ]
   }
 }
