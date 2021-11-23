@@ -1,16 +1,58 @@
 from tkinter import *
+from tkinter import messagebox  # on line 1 we imported all Classes but this is not a Class
+from random import choice, randint, shuffle
+import pyperclip
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+# Password Generator Project
 
 
 def generate_pass():
-    pass
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+               'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+               'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
+    password_letters = [choice(letters) for _ in range(randint(8, 10))]
+    password_numbers = [choice(numbers) for _ in range(randint(2, 4))]
+    password_symbols = [choice(symbols) for _ in range(randint(2, 4))]
+
+    password_list = password_letters + password_numbers + password_symbols
+    shuffle(password_list)
+
+    # password = ""
+    # for char in password_list:
+    #   password += char
+
+    password = ''.join(password_list)  # previous 3 lines in 1 line
+
+    print(f"Your password is: {password}")
+
+    # Pyperclip implementation
+    password_entry.insert(0, password)
+    pyperclip.copy(password)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
 
-def add_pass():
-    pass
+def save():
+    website_value = website_entry.get()
+    email_value = email_entry.get()
+    password_value = password_entry.get()
+
+    if len(website_value) == 0 or len(password_value) == 0:
+        empty_entries = messagebox.showinfo(title='Oops', message="Please don't leave any fields empty!")
+    # Create messagebox
+    else:
+        is_ok = messagebox.askokcancel(title=website_value, message=f'These are the details you entered:\n '
+                                                     f'Email: {email_value}\n Password: {password_value}\n '
+                                                     f'Is it ok to save? ')
+        if is_ok:
+            # Other methods starting with 'ask' (messagebox.askyesno .askrerycancel etc.)
+            with open('data.txt', 'a') as f:
+                f.write(f"{website_value} | {email_value} | {password_value}\n")
+            website_entry.delete(0, END)
+            password_entry.delete(0, END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -26,29 +68,29 @@ canvas.create_image(100, 100, image=logo_img)
 canvas.grid(column=1, row=0)
 
 # Labels
-website_label = Label(text='Website:')
-website_label.grid(column=0, row=1)
-
-email_label = Label(text='Email/Username:')
-email_label.grid(column=0, row=2)
-
-Password_label = Label(text='Password:')
-Password_label.grid(column=0, row=3)
+website_label = Label(text="Website:")
+website_label.grid(row=1, column=0)
+email_label = Label(text="Email/Username:")
+email_label.grid(row=2, column=0)
+password_label = Label(text="Password:")
+password_label.grid(row=3, column=0)
 
 # Entries
-website_entry = Entry(width=45)
-website_entry.grid(column=1, row=1, columnspan=2)
-
-email_entry = Entry(width=45)
-email_entry.grid(column=1, row=2, columnspan=2)
-
-password_entry = Entry(width=25)
-password_entry.grid(column=1, row=3)
+website_entry = Entry(width=35)
+website_entry.grid(row=1, column=1, columnspan=2)
+# Put a caret in website_entry
+website_entry.focus()
+email_entry = Entry(width=35)
+email_entry.grid(row=2, column=1, columnspan=2)
+# Populate the entry with default string
+# Place cursor at the beginning (0) or at the end (END)
+email_entry.insert(0, "angela@gmail.com")
+password_entry = Entry(width=21)
+password_entry.grid(row=3, column=1)
 
 # Buttons
-generate_pass_button = Button(text="Generate Password", command=generate_pass)
-generate_pass_button.grid(column=2, row=3)
-
-add_pass_button = Button(text="Add", width=30, command=add_pass)
-add_pass_button.grid(column=1, row=4, columnspan=2)
+generate_password_button = Button(text="Generate Password", command=generate_pass)
+generate_password_button.grid(row=3, column=2)
+add_button = Button(text="Add", width=36, command=save)
+add_button.grid(row=4, column=1, columnspan=2)
 window.mainloop()
